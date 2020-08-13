@@ -46,7 +46,7 @@ const Start = () => {
                     {movies.map((movie, index) => (
                         <Movie
                             activeMovieId={activeMovieId}
-                            key={movie.name}
+                            key={index}
                             index={index}
                             movie={movie}
                             open={open}
