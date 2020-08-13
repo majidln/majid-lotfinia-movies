@@ -119,7 +119,6 @@ const Modal = ({movie, position, close}: ModalProps) => {
         ],
         [],
     );
-
     return (
         <SwipeToClose y={translationY} opacity={opacity.value} {...{scale}}>
             <Animated.View
@@ -144,6 +143,14 @@ const Modal = ({movie, position, close}: ModalProps) => {
                                 {movie.description}
                             </Text>
                         </Text>
+                        {movie.reviews?.length > 0 && (
+                            <Text style={styles.reviewTitle}>Reviews:</Text>
+                        )}
+                        {movie.reviews?.map((review, index) => (
+                            <Text style={styles.review} key={review.id}>
+                                {index + 1}: {review.body}
+                            </Text>
+                        ))}
                     </ScrollView>
                 </View>
             </Animated.View>
@@ -162,6 +169,13 @@ const styles = StyleSheet.create({
     paragraph: {
         fontSize: 24,
         marginBottom: 16,
+    },
+    reviewTitle: {
+        fontSize: 16,
+        fontWeight: 'bold',
+    },
+    review: {
+        fontSize: 14,
     },
 });
 
